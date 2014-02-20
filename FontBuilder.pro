@@ -117,7 +117,7 @@ FORMS += src/fontbuilder.ui \
     src/charmapdialog.ui
 TRANSLATIONS = fontbuilder_en.ts \
     fontbuilder_ru.ts
-QT += xml
+QT += core gui widgets xml
 
 DESTDIR = bin
 OBJECTS_DIR = .obj

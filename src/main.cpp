@@ -28,7 +28,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <QtGui/QApplication>
+#include <QApplication>
 #include <QCoreApplication>
 #include "fontbuilder.h"
 
