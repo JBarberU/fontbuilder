@@ -56,6 +56,10 @@ public:
     void setFontConfig(const FontConfig* config,const LayoutConfig* layout) { m_font_config = config;m_layout_config=layout;}
     void setData(const LayoutData* data,const RendererData& rendered);
     void setTextureFilename(const QString& fn) { m_texture_file = fn;}
+
+    const int &getTextureWidth();
+    const int &getTextureHeight();
+
 private:
     QString m_error_string;
     QString m_extension;

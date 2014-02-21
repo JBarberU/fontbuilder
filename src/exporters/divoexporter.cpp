@@ -42,13 +42,18 @@ DivoExporter::DivoExporter(QObject *parent) :
 bool DivoExporter::Export(QByteArray& out) {
     QDomDocument doc;
     doc.appendChild(doc.createProcessingInstruction("xml","version=\"1.0\" encoding=\"utf-8\"" ));
-    QDomElement root = doc.createElement("Font");
-    doc.appendChild(root);
+    QDomElement texture = doc.createElement("Texture");
+    doc.appendChild(texture);
+    texture.setAttribute("width", getTextureWidth());
+    texture.setAttribute("height", getTextureHeight());
 
-    root.setAttribute("family",fontConfig()->family());
-    root.setAttribute("style",fontConfig()->style());
-    root.setAttribute("size",fontConfig()->size());
-    root.setAttribute("height",metrics().height);
+    QDomElement font = doc.createElement("Font");
+    doc.appendChild(font);
+
+    font.setAttribute("family",fontConfig()->family());
+    font.setAttribute("style",fontConfig()->style());
+    font.setAttribute("size",fontConfig()->size());
+    font.setAttribute("height",metrics().height);
 
     int offset = metrics().ascender;
 
@@ -68,7 +73,7 @@ bool DivoExporter::Export(QByteArray& out) {
             ke.setAttribute("advance",k.value());
             ce.appendChild(ke);
         }
-        root.appendChild(ce);
+        font.appendChild(ce);
     }
     out = doc.toByteArray(1);
     return true;

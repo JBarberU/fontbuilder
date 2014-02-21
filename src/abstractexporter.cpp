@@ -73,3 +73,8 @@ bool AbstractExporter::Write(QByteArray& bytes) {
     return false;
 }
 
+const int &AbstractExporter::getTextureWidth()
+{ return m_tex_width; }
+
+const int &AbstractExporter::getTextureHeight()
+{ return m_tex_height; }
