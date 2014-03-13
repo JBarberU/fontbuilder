@@ -55,6 +55,9 @@ protected:
 private:
     Ui::OutputFrame *ui;
     OutputConfig*   m_config;
+    QList<QString> m_dfSizes;
+    bool m_dfChecked;
+    QString m_dfSpread;
 
 private slots:
     void on_comboBoxDescriptionType_currentIndexChanged(QString );
@@ -68,6 +71,9 @@ private slots:
     void on_lineEditDescriptionFilename_editingFinished( );
     void on_pushButtonSelectPath_clicked();
 
+    void on_checkBoxDFGenerate_stateChanged(int arg1);
+    void on_lineEditDFSpread_textEdited(const QString &arg1);
+    void on_comboBoxDFSize_currentIndexChanged(const QString &arg1);
 };
 
 #endif // OUTPUTFRAME_H

@@ -49,6 +49,9 @@ OutputFrame::OutputFrame(QWidget *parent) :
         ui->comboBoxImageFormat->addItem(name,format);
     }*/
     ui->widgetGridColor->setColor(QColor(255,0,255,255));
+    ui->lineEditDFSpread->setText("10");
+    ui->comboBoxDFSize->setCurrentIndex(0);
+    ui->checkBoxDFGenerate->setChecked(false);
 }
 
 OutputFrame::~OutputFrame()
@@ -159,4 +162,19 @@ void OutputFrame::setImageWriters(const QStringList& writers) {
 void OutputFrame::on_comboBoxDescriptionType_currentIndexChanged(QString name)
 {
     if (m_config) m_config->setDescriptionFormat(name);
+}
+
+void OutputFrame::on_checkBoxDFGenerate_stateChanged(int arg1)
+{
+    m_config->setDistanceField(ui->checkBoxDFGenerate->isChecked());
+}
+
+void OutputFrame::on_lineEditDFSpread_textEdited(const QString &arg1)
+{
+    m_config->setDFSpread(arg1);
+}
+
+void OutputFrame::on_comboBoxDFSize_currentIndexChanged(const QString &arg1)
+{
+    m_config->setDFSize(arg1);
 }

@@ -67,6 +67,21 @@ public:
     bool writeDescription() const { return m_write_description;}
     void setWriteDescription(bool write) { m_write_description = write;}
     Q_PROPERTY(bool writeDescription READ writeDescription WRITE setWriteDescription );
+
+    bool distanceField() { return m_distanceField; }
+    void setDistanceField(const bool distanceField) { m_distanceField = distanceField; }
+    Q_PROPERTY(bool distanceField READ distanceField WRITE setDistanceField);
+
+    const QString dfSpread() const { return m_dfSpread; }
+    void setDFSpread(const QString &dfSpread) { m_dfSpread = dfSpread; }
+    Q_PROPERTY(QString dfSpread READ dfSpread WRITE setDFSpread);
+
+    const QString dfSize() const { return m_dfSize; }
+    void setDFSize(const QString &dfSize) { m_dfSize = dfSize; }
+    Q_PROPERTY(QString dfSize READ dfSize WRITE setDFSize);
+
+
+
 private:
     QString m_path;
     bool    m_write_image;
@@ -75,6 +90,10 @@ private:
     bool    m_write_description;
     QString m_description_name;
     QString m_description_format;
+    bool    m_distanceField;
+    QString m_dfSpread;
+    QString m_dfSize;
+
 signals:
     void imageNameChanged(const QString&);
     void descriptionNameChanged(const QString&);

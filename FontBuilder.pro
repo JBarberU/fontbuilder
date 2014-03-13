@@ -119,11 +119,18 @@ TRANSLATIONS = fontbuilder_en.ts \
     fontbuilder_ru.ts
 QT += core gui widgets xml
 
+HEADERS += df-generator/include/Image.h \
+    df-generator/include/DistanceField.h \
+    df-generator/include/stb/stb_image.h \
+    df-generator/include/stb/stb_image_write.h \
+
 DESTDIR = bin
 OBJECTS_DIR = .obj
 MOC_DIR = .obj
 UI_DIR = .obj
 TARGET = FontBuilder
+
+QMAKE_CXXFLAGS += "-std=c++0x"
 
 INCLUDEPATH+=src/
 mac { 

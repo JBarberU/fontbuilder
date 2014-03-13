@@ -49,7 +49,7 @@
 #include "exporterfactory.h"
 #include "imagewriterfactory.h"
 #include "fontloader.h"
-
+#include "df-generator/include/DistanceField.h"
 
 FontBuilder::FontBuilder(QWidget *parent) :
     QMainWindow(parent),
@@ -304,6 +304,15 @@ void FontBuilder::on_pushButtonWriteFont_clicked()
         m_image_writer = exporter;
         m_image_writer->watch(filename);
         connect(m_image_writer,SIGNAL(imageChanged(QString)),this,SLOT(onExternalImageChanged(QString)));
+
+        if (m_output_config->distanceField())
+        {
+            QString cmpltPath {m_output_config->path() + "/" + m_output_config->imageName()};
+            dfgenerator::DistanceField df(cmpltPath.toStdString() + "." + exporter->extension().toStdString(), m_output_config->dfSize().toInt());
+            int NUM_CORES = 10;
+            if (df.getDfImage(m_output_config->dfSpread().toInt(), NUM_CORES).saveImage(cmpltPath.toStdString() + "-df.png"))
+                qDebug() << "Saved image";
+        }
     }
     if (m_output_config->writeDescription()) {
         AbstractExporter* exporter = m_exporter_factory->build(m_output_config->descriptionFormat(),this);
@@ -366,7 +375,7 @@ void FontBuilder::onSpacingChanged() {
 
 void FontBuilder::on_comboBox_currentIndexChanged(int index)
 {
-    static const float scales[] = { 0.5,1.0,2.0,4.0,8.0 };
+    static const float scales[] = { 0.0625, 0.125, 0.25, 0.5,1.0,2.0,4.0,8.0 };
     ui->widgetFontPreview->setScale(scales[index]);
 }
 

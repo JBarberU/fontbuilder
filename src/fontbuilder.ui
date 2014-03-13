@@ -25,7 +25,7 @@
        <locale language="English" country="UnitedStates"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_Font">
        <attribute name="title">
@@ -173,8 +173,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>246</width>
-             <height>406</height>
+             <width>365</width>
+             <height>430</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout">
@@ -263,12 +263,30 @@
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
           </property>
+          <property name="currentText">
+           <string>100%</string>
+          </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>4</number>
           </property>
           <property name="frame">
            <bool>true</bool>
           </property>
+          <item>
+           <property name="text">
+            <string>6,25%</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>12,5%</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>25%</string>
+           </property>
+          </item>
           <item>
            <property name="text">
             <string>50%</string>
@@ -318,7 +336,7 @@
      <x>0</x>
      <y>0</y>
      <width>612</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
